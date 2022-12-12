@@ -3,7 +3,6 @@ let HEIGHT = window.innerHeight;
 
 // Constants
 let STEP_SIZE = 5;
-let NUM_STEPS = 1;
 let RADIUS = 10;
 
 // Starting Values
@@ -18,14 +17,12 @@ function getRandomIntInclusive(min, max) {
 }
 
 function randomWalk() {
-    colorMode(HSB);
-    
-    for (let i=0; i < NUM_STEPS; i++) {  
     // draw circle
+    colorMode(HSB);
     noStroke(0);  
     fill(hue, 100, 100);
-    setInterval(circle(cX, cY, RADIUS), 1000);
-    
+    circle(cX, cY, RADIUS);
+
     // Get random directions
     let direction = getRandomIntInclusive(0,3);  // this always returns 0,1,2,or 3
     let hueDirection = getRandomIntInclusive(0,1);  // this always returns 0 or 1
@@ -53,13 +50,10 @@ function randomWalk() {
     if (hueDirection === 1) {
         hue += STEP_SIZE;
         hue %= 360;
-        break;
     } else {
         hue -= STEP_SIZE;
         hue %= 360;
-        break;
     }
-    }  
 }
 
 function setup() {
@@ -70,3 +64,5 @@ background('#222222');
 function draw() {
     randomWalk();
 }
+
+setInterval(draw, 1000);

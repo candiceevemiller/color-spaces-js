@@ -10,7 +10,7 @@ function getRandomIntInclusive(min, max) {
 // TODO add timeout function so it draws slower
 function randomWalk() {
     // Constants
-    let STEP_SIZE = 3;
+    let STEP_SIZE = 5;
     let NUM_STEPS = 10000;
     let RADIUS = 10;
     
@@ -34,12 +34,16 @@ function randomWalk() {
     switch (direction) {
         case 0:
             cX -= STEP_SIZE; // move left
+            break;
         case 1:
             cX += STEP_SIZE; // move right
+            break;
         case 2:
             cY -= STEP_SIZE; // move up
+            break;
         case 3:
             cY += STEP_SIZE; // move down
+            break;
     }
     
     if (hueDirection === 1) {
@@ -57,7 +61,7 @@ function randomWalk() {
 
 function setup() {
 createCanvas(WIDTH, HEIGHT);
-noLoop(); // p5 will loop code in draw() infinitely without this
+// noLoop(); // p5 will loop code in draw() infinitely without this (commented out because I want it to now that it works)
 }
 
 function draw() {
